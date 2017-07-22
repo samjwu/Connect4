@@ -19,8 +19,9 @@ var UI = {
 var playertomove = UI.startingplayer;
 
 /*
-define board as 2D array
+Define board as 2D array
 0 represents empty
+Connect Four boards are 7x6
 */
 var board = [[0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
