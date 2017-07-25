@@ -21,6 +21,7 @@ var playertomove = UI.startingplayer;
 /*
 Define board as 2D array
 0 represents empty
+"red" and "yellow" represent chips
 Connect Four boards are 7x6
 */
 var board = [[0,0,0,0,0,0,0],

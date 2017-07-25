@@ -3,7 +3,9 @@ Contain the game logic to alter the state of the game
 Functions affect board, players, and win conditions
 */
 
-//Function to show board (variable from gameplayconstants) on HTML page
+/**
+ * Function to show board (variable from gameplayconstants) on HTML page
+ */
 function displayboard() {
     //recall board is 7x6
     for (var row = 0; row <= 5; row++) {
@@ -18,9 +20,15 @@ function displayboard() {
     }
 }
 
-//Function to place chips on board
-function placechip() {
-
+/**
+ * Function to place chips on board
+ * 
+ * @param color (string): Current player to move's color
+ * @param row (int): Row (y) of placed chip
+ * @param col (int): Column (x) of placed chip
+ */
+function placechip(color, row, col) {
+    board[row][col] = color;
 }
 
 //Function to change turns and allow next player to move
