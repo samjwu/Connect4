@@ -21,6 +21,24 @@ function displayboard() {
 }
 
 /**
+ * Function to get lowest empty position in a column
+ * 
+ * @param col (int): Column (x position) of input location (argument)
+ * @param row (int): Row (y position) of input location (argument)
+ * @return bottom (int): Lowest empty position of column
+ */
+function getcolbotempty() {
+    //recall a board has 6 rows (6 y positions to iterate over)
+    //top is row = 0, bottom is row = 5 
+    for (var bot = 5; bot > row; bot--) {
+        if (board[bot][col] == 0) {
+            return bot;
+        }
+    }
+    return bot;
+}
+
+/**
  * Function to place chips on board
  * 
  * @param color (string): Current player to move's color
