@@ -51,7 +51,13 @@ function placechip(color, row, col) {
 
 //Function to change turns and allow next player to move
 function changeturn() {
-
+    if (playertomove == "red") {
+        playertomove = "yellow";
+    }
+    //else playertomove == "yellow"
+    else {
+        playertomove = "red";
+    }
 }
 
 //Function to check if a player wins
