@@ -21,13 +21,27 @@ function displayboard() {
 }
 
 /**
+ * Function to check if a coordinate has a chip
+ * and return true if chip is at the input location (argument)
+ * 
+ * @param row (int): Row (y) of coordinate
+ * @param col (int): Column (x) of coordinate
+ * @return value (bool): True if coordinate is not empty
+ */
+function checkcoordinate(row, col) {
+    var value = board[row][col];
+    //https://www.sitepoint.com/java-ternary-operator/
+    return value == 0 ? false : true; //cond ? condtrue : condfalse
+}
+ 
+/**
  * Function to get lowest empty position in a column
  * 
- * @param col (int): Column (x position) of input location (argument)
  * @param row (int): Row (y position) of input location (argument)
+ * @param col (int): Column (x position) of input location (argument)
  * @return bottom (int): Lowest empty position of column
  */
-function getcolbotempty() {
+function getcolbotempty(row, col) {
     //recall a board has 6 rows (6 y positions to iterate over)
     //top is row = 0, bottom is row = 5 
     for (var bot = 5; bot > row; bot--) {
@@ -49,7 +63,9 @@ function placechip(color, row, col) {
     board[row][col] = color;
 }
 
-//Function to change turns and allow next player to move
+/**
+ * Function to change turns and allow next player to move
+ */
 function changeturn() {
     if (playertomove == "red") {
         playertomove = "yellow";
