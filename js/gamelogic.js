@@ -86,7 +86,17 @@ function checkwin() {
 
 }
 
-//Function to check if players draw
+/**
+ * Function to check if players draw
+ * Game cannot be a draw if there is at least one empty slot on board
+ */
 function checkdraw() {
-    
+    //recall board is 7x6
+    for (var row = 0; row <= 5; row++) {
+        for (var col = 0; col <= 6; col++) {
+            if (board[][] == 0) {
+                return false;
+            }
+        }
+    }    
 }
