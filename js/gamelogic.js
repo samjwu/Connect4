@@ -97,9 +97,28 @@ function checkwin() {
  * @return boolean: true if win, false otherwise
  */
 function horizontalline(prevrow) {
+    var currchip = null;
+    var prevchip = 0;
+    var count = 0;
+
     for (var col = 0; col <= 6; col++) {
-        
+        currchip = board[prevrow][col];
+        if (currchip == prevchip && currchip != 0) {
+            count++;
+        }
+        else {
+            count = 0;
+        }
+        //count == 3 when four chips are in a row
+        if (count == UI.wincondition - 1) {
+            return true;
+        }
+        //set previous chip to current chip for next comparison
+        prevchip = currchip;
     }
+
+    //else no horizontal line
+    return false;
 }
 
 /**
