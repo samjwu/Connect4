@@ -81,14 +81,20 @@ function changeturn() {
     }
 }
 
-//Function to check if a player wins
+/**
+ * Function to check if a player wins
+ * 
+ * @return boolean: true if win, false otherwise
+ */
 function checkwin() {
-
+    return horizontalline() || verticalline() || ascendingdiagonalline() || descendingdiagonalline();
 }
 
 /**
  * Function to check if players draw
  * Game cannot be a draw if there is at least one empty slot on board
+ * 
+ * @return boolean: true if draw, false otherwise
  */
 function checkdraw() {
     //recall board is 7x6
