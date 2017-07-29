@@ -29,6 +29,10 @@ $(document).ready(function() {
         $("playerui").addClass(playertomove).text(UI["player1name"]);
     }
 
+    //Variables to keep track of position of last played chip
+    prevrow;
+    prevcol;
+
     //Function for running game after button click on board
     $(".board button").click(function(event) {
         //Get position of button

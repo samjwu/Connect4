@@ -91,6 +91,18 @@ function checkwin() {
 }
 
 /**
+ * Function to check if there is a horizontal win (four of the same chips in a row)
+ * 
+ * @param prevrow (int): Row (y) of last played chip
+ * @return boolean: true if win, false otherwise
+ */
+function horizontalline(prevrow) {
+    for (var col = 0; col <= 6; col++) {
+        
+    }
+}
+
+/**
  * Function to check if players draw
  * Game cannot be a draw if there is at least one empty slot on board
  * 
