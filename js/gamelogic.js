@@ -122,6 +122,13 @@ function horizontalline(prevrow) {
 }
 
 /**
+ * Function to check if there is a vertical win (four of the same chips in a row
+ */
+function verticalline() {
+    
+}
+
+/**
  * Function to check if players draw
  * Game cannot be a draw if there is at least one empty slot on board
  * 
