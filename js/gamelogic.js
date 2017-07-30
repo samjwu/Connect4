@@ -92,6 +92,7 @@ function checkwin() {
 
 /**
  * Function to check if there is a horizontal win (four of the same chips in a row)
+ * Only need to check row of last placed chip
  * 
  * @param prevrow (int): Row (y) of last played chip
  * @return boolean: true if win, false otherwise
@@ -109,7 +110,7 @@ function horizontalline(prevrow) {
         else {
             count = 0;
         }
-        //count == 3 when four chips are in a row
+        //count == 3 when four chips are in a line
         if (count == UI.wincondition - 1) {
             return true;
         }
@@ -123,9 +124,33 @@ function horizontalline(prevrow) {
 
 /**
  * Function to check if there is a vertical win (four of the same chips in a row
+ * Only need to check column of last placed chip
+ * 
+ * @param prevcol (int): Column (x) of last played chip
+ * @return boolean: true if win, false otherwise
  */
-function verticalline() {
-    
+function verticalline(prevcol) {
+    var currchip = null;
+    var prevchip = 0;
+    var count = 0;
+
+    for (var row = 0; row <= 5; row++) {
+        currchip = board[row][prevcol];
+        if (currchip == prevchip && currchip != 0) {
+            count++;
+        }
+        else {
+            count = 0;
+        }
+        //count == 3 when four chips are in a line
+        if (count == UI.wincondition - 1) {
+            return true;
+        }
+        //set previous chip to current chip for next comparison
+        prevchip = currchip;
+    }
+
+    return false;
 }
 
 /**
