@@ -123,7 +123,7 @@ function horizontalline(prevrow) {
 }
 
 /**
- * Function to check if there is a vertical win (four of the same chips in a row
+ * Function to check if there is a vertical win (four of the same chips in a row)
  * Only need to check column of last placed chip
  * 
  * @param prevcol (int): Column (x) of last played chip
@@ -150,7 +150,22 @@ function verticalline(prevcol) {
         prevchip = currchip;
     }
 
+    //else no vertical line
     return false;
+}
+
+/**
+ * Function to check if there is an ascending diagonal win (four of the same chips in a row)
+ */
+function ascendingdiagonalline() {
+
+}
+
+/**
+ * Function to check if there is a descending diagonal win (four of the same chips in a row)
+ */
+function descendingdiagonalline() {
+
 }
 
 /**
