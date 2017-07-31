@@ -169,7 +169,7 @@ function ascendingdiagonalline(prevrow, prevcol) {
     for (var row = 0; row < 6; row++) {
         //for any coordinate in an ascending diagonal, sum of col and row are the same
         //thus when row increases by 1, col decreases by 1
-        //row = 0 is the top-right of diagonal; row = width - 1 is the bottom-left of diagonal
+        //row = 0 is the top-right of diagonal; row = 5 is the bottom-left of diagonal
         var col = prevcol + prevrow - row;
         if (col >=0 && col < 7) {
 
@@ -202,6 +202,30 @@ function descendingdiagonalline(prevrow, prevcol) {
     var currchip = null;
     var prevchip = 0;
     var count = 0;
+
+    for (var row = 0; row < 6; row++) {
+        //for a descending diagonal, sums of successive coordinates (col + row) increase by 2
+        //thus when row increases by 1, col increases by 1
+        //row = 0, is top-left of diagonal; row = 5 is the bottom-right of diagonal
+        var col = prevcol - prevrow + row; //note prevcol-prevrow gives top-left of diagonal
+        if (col >=0 && col < 7) {
+
+            currchip = board[row][col];
+            if (currchip == prevchip && currchip != 0) {
+                count++;
+            }
+            else {
+                count = 0;
+            }
+            //count == 3 when four chips are in a line
+            if (count == UI.wincondition - 1) {
+                return true;
+            }
+            //set previous chip to current chip for next comparison
+            prevchip = currchip;
+
+        }
+    }
 }
 
 /**
