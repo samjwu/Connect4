@@ -189,6 +189,9 @@ function ascendingdiagonalline(prevrow, prevcol) {
 
         }
     }
+
+    //else no ascending diagonal line
+    return false;
 }
 
 /**
@@ -226,6 +229,9 @@ function descendingdiagonalline(prevrow, prevcol) {
 
         }
     }
+
+    //else no descending diagonal line
+    return false;
 }
 
 /**
