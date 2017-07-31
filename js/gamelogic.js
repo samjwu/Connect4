@@ -8,8 +8,8 @@ Functions affect board, players, and win conditions
  */
 function displayboard() {
     //recall board is 7x6
-    for (var row = 0; row <= 5; row++) {
-        for (var col = 0; col <= 6; col ++) {
+    for (var row = 0; row < 6; row++) {
+        for (var col = 0; col < 7; col ++) {
             if (board[row][col] != 0) {
                 //https://www.w3schools.com/tags/tag_tr.asp
                 //https://www.w3schools.com/tags/tag_td.asp
@@ -102,7 +102,7 @@ function horizontalline(prevrow) {
     var prevchip = 0;
     var count = 0;
 
-    for (var col = 0; col <= 6; col++) {
+    for (var col = 0; col < 7; col++) {
         currchip = board[prevrow][col];
         if (currchip == prevchip && currchip != 0) {
             count++;
@@ -134,7 +134,7 @@ function verticalline(prevcol) {
     var prevchip = 0;
     var count = 0;
 
-    for (var row = 0; row <= 5; row++) {
+    for (var row = 0; row < 6; row++) {
         currchip = board[row][prevcol];
         if (currchip == prevchip && currchip != 0) {
             count++;
@@ -156,16 +156,52 @@ function verticalline(prevcol) {
 
 /**
  * Function to check if there is an ascending diagonal win (four of the same chips in a row)
+ * 
+ * @param prevrow (int): Row (y) of last played chip
+ * @param prevcol (int): Column (x) of last played chip
+ * @return boolean: true if win, false otherwise
  */
-function ascendingdiagonalline() {
+function ascendingdiagonalline(prevrow, prevcol) {
+    var currchip = null;
+    var prevchip = 0;
+    var count = 0;
 
+    for (var row = 0; row < 6; row++) {
+        //for any coordinate in an ascending diagonal, sum of col and row are the same
+        //thus when row increases by 1, col decreases by 1
+        //row = 0 is the top-right of diagonal; row = width - 1 is the bottom-left of diagonal
+        var col = prevcol + prevrow - row;
+        if (col >=0 && col < 7) {
+
+            currchip = board[row][col];
+            if (currchip == prevchip && currchip != 0) {
+                count++;
+            }
+            else {
+                count = 0;
+            }
+            //count == 3 when four chips are in a line
+            if (count == UI.wincondition - 1) {
+                return true;
+            }
+            //set previous chip to current chip for next comparison
+            prevchip = currchip;
+
+        }
+    }
 }
 
 /**
  * Function to check if there is a descending diagonal win (four of the same chips in a row)
+ * 
+ * @param prevrow (int): Row (y) of last played chip
+ * @param prevcol (int): Column (x) of last played chip
+ * @return boolean: true if win, false otherwise
  */
-function descendingdiagonalline() {
-
+function descendingdiagonalline(prevrow, prevcol) {
+    var currchip = null;
+    var prevchip = 0;
+    var count = 0;
 }
 
 /**
@@ -176,8 +212,8 @@ function descendingdiagonalline() {
  */
 function checkdraw() {
     //recall board is 7x6
-    for (var row = 0; row <= 5; row++) {
-        for (var col = 0; col <= 6; col++) {
+    for (var row = 0; row < 6; row++) {
+        for (var col = 0; col < 7; col++) {
             if (board[][] == 0) {
                 return false;
             }
