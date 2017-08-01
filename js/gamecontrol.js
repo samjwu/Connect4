@@ -30,14 +30,26 @@ $(document).ready(function() {
     }
 
     //Variables to keep track of position of last played chip
-    prevrow;
-    prevcol;
+    var prevrow = null;
+    var prevcol = null;
 
     //Function for running game after button click on board
     $(".board button").click(function(event) {
         //Get position of button
         var row = $('.board tr').index($(this).closest('tr')); //y
+        row = getcolbotempty(row, col); //get bottom y position
         var col = $(this).closest('tr').find('td').index($(this).closest('td')); //x
+
+        //If position is not empty, display error message
+        if (checkcoordinate(row, col)) {
+            alert(UI.invalidmovemessage);
+            return;
+        }
+
+        //Place chip if valid and display board
+        placechip(playertomove, row, col);
+        displayboard();
     });
+
 
 });

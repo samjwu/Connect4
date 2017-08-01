@@ -26,7 +26,7 @@ function displayboard() {
  * 
  * @param row (int): Row (y) of coordinate
  * @param col (int): Column (x) of coordinate
- * @return value (bool): True if coordinate is not empty
+ * @return value (bool): True if coordinate is not empty (False if empty)
  */
 function checkcoordinate(row, col) {
     var value = board[row][col];
@@ -65,7 +65,7 @@ function placechip(color, row, col) {
 
 /**
  * Function to change turns and allow next player to move
- * as well as update UI
+ * as well as update UI to show current player's turn
  */
 function changeturn() {
     if (playertomove == "red") {
