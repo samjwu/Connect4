@@ -16,7 +16,7 @@ $(document).ready(function() {
     UI.player2name = prompt("Enter Player 2 Name:", UI.player2name);
 
     //Variable for turn messages
-    $(".playerui").text(UI.turnmessage); 
+    $(".uimsg").text(UI.turnmessage); 
 
     //Add text for turn messages
     if (playertomove == "red") {
@@ -36,9 +36,9 @@ $(document).ready(function() {
     //Function for running game after button click on board
     $(".board button").click(function(event) {
         //Get position of button
-        var row = $('.board tr').index($(this).closest('tr')); //y
+        var row = $(".board tr").index($(this).closest("tr")); //y
         row = getcolbotempty(row, col); //get bottom y position
-        var col = $(this).closest('tr').find('td').index($(this).closest('td')); //x
+        var col = $(this).closest("tr").find("td").index($(this).closest("td")); //x
 
         //If position is not empty, display error message
         if (checkcoordinate(row, col)) {
@@ -46,10 +46,36 @@ $(document).ready(function() {
             return;
         }
 
-        //Place chip if valid and display board
+        //If valid move, place chip, record move, and display board
         placechip(playertomove, row, col);
+        prevrow = row;
+        prevcol = col;
         displayboard();
+
+        //Check for win conditions
+        if (checkwin(prevrow, prevcol)) {
+            //End game by removing the click eventlistener
+            $(".board button").unbind("click");
+            $(".uimsg").text(UI.winmessage);
+            $(".playagain").show("slow");
+            return;
+        }
+        else if (checkdraw()) {
+            //End game by removing the click eventlistener
+            $(".board button").unbind("click");
+            $(".uimsg").text(UI.drawmessage);
+            $(".playagain").show("slow");
+            return;
+        }
+
+        //Go to next player's turn
+        changeturn();
     });
 
+    //Play again function
+    $(".playagain").click(function(event) {
+        //https://www.w3schools.com/jsref/met_loc_reload.asp
+        location.reload();
+    });
 
 });

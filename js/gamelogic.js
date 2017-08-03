@@ -84,10 +84,12 @@ function changeturn() {
 /**
  * Function to check if a player wins
  * 
+ * @param prevrow (int): Row (y) of last played chip
+ * @param prevcol (int): Column (x) of last played chip
  * @return boolean: true if win, false otherwise
  */
-function checkwin() {
-    return horizontalline() || verticalline() || ascendingdiagonalline() || descendingdiagonalline();
+function checkwin(prevrow, prevcol) {
+    return horizontalline(prevrow) || verticalline(prevcol) || ascendingdiagonalline(prevrow, prevcol) || descendingdiagonalline(prevrow, prevcol);
 }
 
 /**
@@ -248,5 +250,7 @@ function checkdraw() {
                 return false;
             }
         }
-    }    
+    }
+    //else board is filled and game is draw
+    return true;
 }
