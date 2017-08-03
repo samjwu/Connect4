@@ -52,7 +52,7 @@ $(document).ready(function() {
         prevcol = col;
         displayboard();
 
-        //Check for win conditions
+        //Check for win/draw conditions
         if (checkwin(prevrow, prevcol)) {
             //End game by removing the click eventlistener
             $(".board button").unbind("click");
