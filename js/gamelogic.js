@@ -246,7 +246,7 @@ function checkdraw() {
     //recall board is 7x6
     for (var row = 0; row < 6; row++) {
         for (var col = 0; col < 7; col++) {
-            if (board[][] == 0) {
+            if (board[row][col] == 0) {
                 return false;
             }
         }
