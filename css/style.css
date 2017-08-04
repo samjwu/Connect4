@@ -12,6 +12,23 @@ h1 {
     margin-bottom:5px;
 }
 
+.wrapper {
+    margin: 50px auto auto;
+    width: 500px;
+}
+
+.header {
+    
+}
+
+.title {
+
+}
+
+.info {
+
+}
+
 .board button {
     background: #808080;
     width: 50px;
