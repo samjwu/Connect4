@@ -17,6 +17,7 @@ h1 {
     width: 400px;
 }
 
+/* game ui info */
 .header {
     text-align: center;
 }
@@ -25,15 +26,31 @@ h1 {
     text-align: center;
 }
 
-/* https://www.w3schools.com/cssref/css_units.asp */
+/*
+game ui messages
+https://www.w3schools.com/cssref/css_units.asp
+*/
 .info {
     font-size: 1.3em;
 }
 
+/*
+https://www.w3schools.com/cssref/css3_pr_border-radius.asp
+*/
 .board button {
     background: #808080;
     width: 50px;
     height: 50px;
-    border-radius: 10%;
+    border-radius: 50%;
     border: 0px;
+}
+
+button.red {
+  background: #cc0000;
+  background: linear-gradient(to bottom, #ff0000 0%,#cc0000 100%);
+}
+
+button.yellow {
+  background: #ffcc00;
+  background: linear-gradient(to bottom, #ffee00 0%,#ffcc00 100%);
 }

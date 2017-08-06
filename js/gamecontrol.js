@@ -16,7 +16,7 @@ $(document).ready(function() {
     UI.player2name = prompt("Enter Player 2 Name:", UI.player2name);
 
     //Variable for turn messages
-    $(".uimsg").text(UI.turnmessage); 
+    $('.uimsg').text(UI.turnmessage); 
 
     //Add text for turn messages
     if (playertomove == "red") {
@@ -37,8 +37,8 @@ $(document).ready(function() {
     $(".board button").click(function(event) {
         //Get position of button
         var row = $(".board tr").index($(this).closest("tr")); //y
-        row = getcolbotempty(row, col); //get bottom y position
         var col = $(this).closest("tr").find("td").index($(this).closest("td")); //x
+        row = getcolbotempty(row, col); //get bottom y position
 
         //If position is not empty, display error message
         if (checkcoordinate(row, col)) {

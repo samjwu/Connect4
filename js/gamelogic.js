@@ -39,7 +39,7 @@ function checkcoordinate(row, col) {
  * 
  * @param row (int): Row (y position) of input location (argument)
  * @param col (int): Column (x position) of input location (argument)
- * @return bottom (int): Lowest empty position of column
+ * @return bot (int): Lowest empty position of column
  */
 function getcolbotempty(row, col) {
     //recall a board has 6 rows (6 y positions to iterate over)
@@ -49,7 +49,7 @@ function getcolbotempty(row, col) {
             return bot;
         }
     }
-    return bot;
+    return row;
 }
 
 /**

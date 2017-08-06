@@ -7,7 +7,7 @@ Contain the gameplay constants and variables for game
 var UI = {
     player1name: "Player 1", //red
     player2name: "Player 2", //yellow
-    startingplayer: "red",
+    startingplayer: "red", //player color
     turnmessage: "Player to move: ",
     invalidmovemessage: "Invalid move. Choose another coordinate.",
     drawmessage: "Draw!",
