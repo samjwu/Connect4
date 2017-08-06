@@ -3,6 +3,19 @@ Contain code for player to interact with DOM
 Uses game logic functions to allow player to play game
 */
 
+//Add text for turn messages
+function uiturnmessage() {
+    if (playertomove == "red") {
+        $("#playerui").removeClass(); //delete old formatting
+        $("#playerui").addClass(playertomove).text(UI["player1name"]); //add new text
+    }
+    //else playertomove == "yellow"
+    else {
+        $("#playerui").removeClass();
+        $("#playerui").addClass(playertomove).text(UI["player2name"]);
+    }
+}
+
 //Run js once DOM (HTML page) is loaded
 //https://www.w3schools.com/js/js_syntax.asp
 //https://stackoverflow.com/questions/1150381/what-is-the-meaning-of-sign-in-javascript
@@ -19,33 +32,14 @@ $(document).ready(function() {
     $('.uimsg').text(UI.turnmessage); 
 
     //Add text for turn messages
-    if (playertomove == "red") {
-        $("#playerui").removeClass(); //delete old text
-        $("#playerui").addClass(playertomove).text(UI["player1name"]); //add new text
-    }
-    //else playertomove == "yellow"
-    else {
-        $("#playerui").removeClass();
-        $("#playerui").addClass(playertomove).text(UI["player2name"]);
-    }
+    uiturnmessage();
 
     //Variables to keep track of position of last played chip
     var prevrow = null;
     var prevcol = null;
 
     //Function for running game after button click on board
-    $(".board button").click(function(event) {
-        //Add text for turn messages
-        if (playertomove == "red") {
-            $("#playerui").removeClass(); //delete old text
-            $("#playerui").addClass(playertomove).text(UI["player1name"]); //add new text
-        }
-        //else playertomove == "yellow"
-        else {
-            $("#playerui").removeClass();
-            $("#playerui").addClass(playertomove).text(UI["player2name"]);
-        }
-
+    $(".board button").click(function(event) {        
         //Get position of button
         var row = $(".board tr").index($(this).closest("tr")); //y
         var col = $(this).closest("tr").find("td").index($(this).closest("td")); //x
@@ -68,6 +62,7 @@ $(document).ready(function() {
             //End game by removing the click eventlistener
             $(".board button").unbind("click");
             $(".uimsg").text(UI.winmessage);
+            uiturnmessage(); //winning player
             $(".playagain").show("slow");
             return;
         }
@@ -75,8 +70,12 @@ $(document).ready(function() {
             //End game by removing the click eventlistener
             $(".board button").unbind("click");
             $(".uimsg").text(UI.drawmessage);
+            $("#playerui").empty(); //delete player to move text
             $(".playagain").show("slow");
             return;
+        }
+        else {
+            uiturnmessage();
         }
 
         //Go to next player's turn
