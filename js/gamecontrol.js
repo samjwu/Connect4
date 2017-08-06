@@ -20,13 +20,13 @@ $(document).ready(function() {
 
     //Add text for turn messages
     if (playertomove == "red") {
-        $("playerui").removeClass(); //delete old text
-        $("playerui").addClass(playertomove).text(UI["player2name"]); //add new text
+        $("#playerui").removeClass(); //delete old text
+        $("#playerui").addClass(playertomove).text(UI["player1name"]); //add new text
     }
     //else playertomove == "yellow"
     else {
-        $("playerui").removeClass();
-        $("playerui").addClass(playertomove).text(UI["player1name"]);
+        $("#playerui").removeClass();
+        $("#playerui").addClass(playertomove).text(UI["player2name"]);
     }
 
     //Variables to keep track of position of last played chip
@@ -35,6 +35,17 @@ $(document).ready(function() {
 
     //Function for running game after button click on board
     $(".board button").click(function(event) {
+        //Add text for turn messages
+        if (playertomove == "red") {
+            $("#playerui").removeClass(); //delete old text
+            $("#playerui").addClass(playertomove).text(UI["player1name"]); //add new text
+        }
+        //else playertomove == "yellow"
+        else {
+            $("#playerui").removeClass();
+            $("#playerui").addClass(playertomove).text(UI["player2name"]);
+        }
+
         //Get position of button
         var row = $(".board tr").index($(this).closest("tr")); //y
         var col = $(this).closest("tr").find("td").index($(this).closest("td")); //x
@@ -69,7 +80,7 @@ $(document).ready(function() {
         }
 
         //Go to next player's turn
-        changeturn();
+        playertomove = changeturn();
     });
 
     //Play again function

@@ -66,6 +66,8 @@ function placechip(color, row, col) {
 /**
  * Function to change turns and allow next player to move
  * as well as update UI to show current player's turn
+ * 
+ * @return playertomove (string): the color of the next player to move
  */
 function changeturn() {
     if (playertomove == "red") {
@@ -79,6 +81,7 @@ function changeturn() {
         $("playerui").removeClass();
         $("playerui").addClass(playertomove).text(UI["player1name"]);
     }
+    return playertomove;
 }
 
 /**
