@@ -57,10 +57,14 @@ $(document).ready(function() {
         prevcol = col;
         displayboard();
 
+        //Go to next player's turn
+        playertomove = changeturn();
+
         //Check for win/draw conditions
         if (checkwin(prevrow, prevcol)) {
             //End game by removing the click eventlistener
             $(".board button").unbind("click");
+            playertomove = changeturn();
             $(".uimsg").text(UI.winmessage);
             uiturnmessage(); //winning player
             $(".playagain").show("slow");
@@ -77,9 +81,6 @@ $(document).ready(function() {
         else {
             uiturnmessage();
         }
-
-        //Go to next player's turn
-        playertomove = changeturn();
     });
 
     //Play again function
